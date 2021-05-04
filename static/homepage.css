@@ -1,0 +1,149 @@
+<link href="https://fonts.googleapis.com/css?family=Orbitron|Spectral+SC|Antic+Slab" rel="stylesheet">
+.tag{
+	float: right;
+	list-style:none;
+	margin-top: 30px;
+}
+.tag li{
+	display: inline-block;
+}
+.tag li a{
+	color: white;
+	text-decoration:none;
+	padding: 5px 15px;
+	font-family: 'Architects Daughter', cursive;
+	font-size: 20px;
+	animation-name: headr;
+	animation-duration: 2s;
+}
+.tag li.active a{
+	border: 1px solid white;
+}
+.tag li a:hover{
+	border: 1px solid white;
+}
+.options{
+	float: left;
+	list-style:none;
+	margin-top: 30 px;
+}
+.options li{
+	display: inline-block;
+}
+.options li a{
+	color: white;
+	text-decoration:none;
+	padding: 5px 20px;
+	font-family:  'Architects Daughter', cursive;
+	font-size: 20px;
+	border: 1px solid white;
+	animation-name: headr;
+	animation-duration: 4s;
+}
+.options li a:hover{
+	background-color:darkorange;
+}
+#centx{
+	font-family: 'Spectral SC', serif;
+	font-size: 25px;
+	color: white;
+	animation-name: headr;
+	animation-duration: 8s;
+}
+#lcentx{
+	font-family: 'Architects Daughter', cursive;
+	font-size: 25px;
+	color: white;
+	animation-name: headr;
+	animation-duration: 8s;
+}
+#aboutcentx{
+	font-family: 'Architects Daughter', cursive;
+	font-size: 22px;
+	color: white;
+	animation-name: headr;
+}
+.top{
+	right: 0;
+	top: 0;
+	width: 100%;
+	color:white;
+	text-align: right;
+}
+footer{
+	width: 100%;
+	color: white;
+	text-align: center;
+	font-family: 'Orbitron', sans-serif;
+	font-size: 95%;
+	animation-name: headr;
+	animation-duration: 12s;
+}
+.foot{
+	width: 100%;
+	color:white;
+	text-align: center;
+	font-family: 'Orbitron', sans-serif;
+	font-size: 95%;
+	left=0;
+	bottom:0;
+	animation-name: headr;
+	animation-duration: 6s;
+}
+.round{
+	border-radius: 12px;
+	height: 3.6%;
+	width: 3.6%;
+}
+.round:hover{
+	background-color: white;
+	border: solid black;
+}
+#desc{
+	font-family: 'Antic Slab', serif;
+	font-size: 18px;
+	color: white;
+}
+#contents {
+	width: 100%;
+}
+nav {
+	float: left;
+	max-width: 160px;
+	margin: 0;
+	padding: 1em;
+}
+
+nav ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+nav ul a {
+	text-decoration: none;
+	font-family: 'Spectral SC', serif;
+	font-size: 25 px;
+	color: white;
+	animation-name: headr;
+	animation-duration: 6s;
+}
+nav ul li a{
+	position: relative;
+	top: 0;
+	transition: top ease 1s;
+}
+nav ul li a:hover{
+	top: -10px;
+}
+article {
+	margin-left: 170px;
+	padding: 1em;
+	overflow: hidden;
+	color: white;
+	animation-name: headr;
+	animation-duration: 8s;
+}
+@keyframes headr{
+	from {opacity: 0;}
+	to {opacity: 1;}
+}

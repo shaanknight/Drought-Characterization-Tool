@@ -1,0 +1,226 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../static/homepage.css">
+		<link href="https://fonts.googleapis.com/css?family=Spectral+SC" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
+		<link rel="stylesheet" href="note.css">
+		<title>Drought Analysis Tool</title>
+		<style>
+		table {
+		  	border-collapse: collapse;
+		    margin: 25px 0;
+		    font-size: 15px;
+		    font-family:'Spectral SC',serif
+		    min-width: 400px;
+		    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+		}
+
+		td, th {
+		  border: 1px solid #dddddd;
+		  text-align: left;
+		  padding: 8px;
+		}
+
+		thead tr {
+		    background-color: #009879;
+		    color: #ffffff;
+		    text-align: left;
+		}
+
+		tbody tr {
+		    border-bottom: 1px solid #dddddd;
+		}
+
+		tbody tr:last-of-type {
+		    border-bottom: 2px solid #009879;
+		}
+		</style>
+	</head>
+   <body style="background-image: url(../static/images/indb.jpg);background-size:cover;background-repeat:no-repeat;color: white">
+   	<div class="top" style="color: white"><b>SAYANTAN JANA</b><br>
+			IIIT Hyderabad
+		</div>
+   	<h1 style="font-family:'Spectral SC',serif;font-size:40px">Drought Analysis Tool</h1>
+   	<div id="aboutcentx">
+   		Among the extreme events, droughts are the most widespread 
+		and slowly developing atmospheric natural hazards which remain <br> 
+		for a long duration affecting natural resources, environment, and 
+		people.<br>
+		Deficit of rainfall over a period of time at a certain location could 
+		lead to various degrees of drought conditions, affecting water <br>
+		resources, agriculture and socio-economic activities. <br>
+		It corresponds to the failure of spatial and temporal precipitation
+		(meteorological drought) and water availability (hydrological <br>
+		drought) and therefore consequent impact on agriculture <br>
+		(agricultural drought), ecosystem and socioeconomic activities of
+		the human being (socio-economic drought). <br>
+		The state of adverse and widespread hydrological, environmental,
+		social and economic impacts due to less than generally <br>
+		anticipated water quantities. <br>
+		<br>
+		<br>
+		This is a basic drought analysis tool that supports handful of options 
+		to analyse and monitor the nature of droughts, as per few standard drought <br>
+		and produces characterisation on droughts using those. <br>
+		<br>
+		<br>
+		Note : The tool is still in alpha stage, it doesn't correspond to all formats of data. <br>
+		Use these <a href="https://drive.google.com/drive/folders/1TFAPakhaMZl-uKuBYNVsjlK3-Pe9hNcH?usp=sharing">datasets</a> for testing purpose. <br>
+		From the above folder, upload 2 files, one corresponding to discharge and <br>
+		another to precipitation for a particular station <br>
+	</div>
+	<br>
+	<br>
+	<br>
+	<form action = "http://localhost:5000/" method = "POST" 
+	 enctype = "multipart/form-data">
+	 	 <div style="font-family:'Architects Daughter',cursive;font-size:20px">
+	 	 	<div style="font-family:'Spectral SC',serif;font-size:20px">
+	 	 		1. Upload data files in csv format:
+	 	 	</div>
+	 	 	Choose Precipitation File: 
+	 	 	<input type = "file" name = "prec_file" />
+
+	 	 	Choose Discharge File:
+	 	 	<input type="file" name="dis_file">
+	 	 	
+	 	 	<br>
+		 	<br>
+	 	 	<div style="font-family:'Spectral SC',serif;font-size:20px">
+	 	 		 2. Choose among the following possible Periods for Time Series Analysis :
+	 	 	</div>
+		 	<input type="radio" name="time_options" id="options1" value="Monthly Discharge">
+		 	<label for="options1">Monthly discharge and Precipitation</label>
+
+		 	<input type="radio" name="time_options" id="options3" value="Yearly Discharge">
+		 	<label for="options3">Yearly discharge and Precipitation</label>
+
+		 	<br>
+		 	<br>
+
+		 	<div style="font-family:'Spectral SC',serif;font-size:20px">
+	 	 		 3. Choose among the following possible Periods for Drought Analysis :
+	 	 	</div>
+
+		 	<input type="radio" name="drought_options" id="options2" value="Monthly SPI">
+		 	<label for="options2">Monthly SPI and SDI</label>
+
+		 	<input type="radio" name="drought_options" id="options4" value="Yearly SPI">
+		 	<label for="options4">Yearly SPI and SDI</label>
+
+		 	<br>
+		 	<br>
+
+		 	<div style="font-family:'Spectral SC',serif;font-size:20px">
+	 	 		 4. Incase you want monthly drought analysis, pick Time Period of interest :
+	 	 	</div>
+
+		 	<input type="number" name="interestperiod" min="1" max="24" step="1">
+		 	<label for="interestperiod">Time Period [ 1 - 24 ]</label>
+
+		 	<br>
+		 	<br>
+
+		 	<div style="font-family:'Spectral SC',serif;font-size:20px">
+	 	 		 5. Choose the duration of Analysis : 
+	 	 	</div>
+
+		 	<input type="month" id="start" name="start" value="2000-01">
+		 	<label for="start">Start Month</label>
+		 
+		 	<input type="month" id="end" name="end" value="2000-01">
+		 	<label for="end">End Month</label>
+		 	
+		 	<br>
+		 	<br>
+
+		 	<label for="threshold">Drought Threshold (between -3 to +3):</label>
+		 	<input type="range" id="threshold" name="threshold" min="-3" max="3">
+		 	<input type = "submit" value="Vizualize" />
+	 	 </div>
+	</form>
+
+	{% if display == "true" %}
+		<br>
+		<br>
+		<br>
+		<div style="font-family:'Spectral SC',serif;font-size:20px">
+				Goodness Test Results :
+		</div>
+		<div style="font-family:'Architects Daughter',cursive;font-size:20px">
+	 	 		Check for the candidate distribution among several probability distributions for the <br> suitability of data performed. <br> 
+	 	 		Probability distributions considered : <u>Gamma</u>, <u>Pearson</u>, <u>logistic</u> <br>
+	 	 		<u>Kolmogorov–Smirnov test</u>, considered for goodness test<br>
+	 	 		In statistics, the Kolmogorov–Smirnov test (K–S test or KS test) is a nonparametric<br> test of the equality of continuous or discontinous, one-dimensional probability <br> distributions that can be used to compare a sample with a reference probability <br>distribution (one-sample K–S test), or to compare two samples (two-sample K–S test). <br>
+	 	</div>
+	 	<table style="font-family:'Spectral SC',serif;font-size:15px">
+		  <tr>
+		    <th></th>
+		    <th>Statistic for Discharge</th>
+		    <th>Pvalue for Discharge</th>
+		    <th>Statistic for Precipitation</th>
+		    <th>Pvalue for Precipitation</th>
+		  </tr>
+		  <tr>
+		    <th>gamma distribution</th>
+		    <th>{{sdg}}</th>
+		    <th>{{pdg}}</th>
+		    <th>{{spg}}</th>
+		    <th>{{ppg}}</th>
+		  </tr>
+		  <tr>
+		    <th>pearson3 distribution</th>
+		    <th>{{sdp}}</th>
+		    <th>{{pdp}}</th>
+		    <th>{{spp}}</th>
+		    <th>{{ppp}}</th>
+		  </tr>
+		  <tr>
+		    <th>logistic distribution</th>
+		    <th>{{sdl}}</th>
+		    <th>{{pdl}}</th>
+		    <th>{{spl}}</th>
+		    <th>{{ppl}}</th>
+		  </tr>
+		</table>
+
+		<div style="font-family:'Spectral SC',serif;font-size:20px">
+	 	 		Time Series Analysis :
+	 	</div>
+		<img src="static/plot.png" height="700" width="1000">
+		<br>
+		<br>
+		<br>
+		<div style="font-family:'Spectral SC',serif;font-size:20px">
+	 	 		Drought Analysis characterisation on Intensity :
+	 	</div>
+		<img src="static/plot_intensity.png" height="700" width="1800">
+		<br>
+		<br>
+		<br>
+		<div style="font-family:'Spectral SC',serif;font-size:20px">
+	 	 		Drought Analysis characterisation on Frequency :
+	 	</div>
+		<img src="static/plot_frequency.png" height="700" width="1800">
+		<br>
+		<br>
+		<br>
+		<div style="font-family:'Spectral SC',serif;font-size:20px">
+	 	 		Drought Analysis characterisation on Duration and Severity of Drought on basis of SPI :
+	 	</div>
+		<img src="static/plot_SPI_duration.png" height="700" width="1800">
+		<br>
+		<br>
+		<br>
+		<div style="font-family:'Spectral SC',serif;font-size:20px">
+	 	 		Drought Analysis characterisation on Duration and Severity of Drought on basis of SDI :
+	 	</div>
+		<img src="static/plot_SDI_duration.png" height="700" width="1800">
+	{% endif %}
+
+
+   </body>
+</html>

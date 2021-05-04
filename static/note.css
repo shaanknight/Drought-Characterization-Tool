@@ -1,0 +1,56 @@
+* {
+	box-sizing: border-box;
+}
+.column{
+	float: left;
+	padding: 10px;
+	height: 500px;
+}
+.left{
+	width: 50%;
+}
+.right{
+	width: 50%;
+}
+.right img{
+	border-radius: 0px 50px 0px 50px;
+	animation-name: sli;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+}
+.right img:hover{
+	border-radius: 50px 0px 50px 0px;
+	width: 500;
+	height: 420;
+	opacity:0.7;
+	animation: none;
+}
+@keyframes sli{
+	0%{
+		opacity:1;
+	}
+	25%{
+		opacity:1;
+	}
+	50%{
+		opacity:1;
+	}
+	90%{
+		opacity:1;
+	}
+}
+@media only screen and (max-width: 700px){
+	.column {
+		width: 50%;
+		margin: 6px 0;
+	}
+}
+@media only screen and (max-width: 500px){
+	.column {
+		width: 100%;
+	}
+	.right img{
+		width: 300px;
+		height: 300px;
+	}
+}
